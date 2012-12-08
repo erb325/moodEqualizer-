@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>Mood Equalizer </title>
   </head>
   <script src="javascript/jquery-1.8.3.js"></script>
   <script src="javascript/jquery-ui-1.9.2.custom.min.js"></script>
   <script src="javascript/mood.js"></script>
-  
+
   <link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.9.2.custom.css">
-  
+
   <script>
     $(function(){
       App.init();
     });
-    
+
   </script>
-  
+
   <style>
     #sliders span {
-      height:220px; 
-      float:left; 
-      margin:25px; 
+      height:220px;
+      float:left;
+      margin:25px;
     }
   </style>
   <body>
+    <h1> <center> Mood Equalizer </center> </h1>
+    <p> Use the sliders to adjust your mood </p>
     <div id="sliders">
-      <span id="angry">88</span>
-      <span id="happy">77</span>
-      <span id="sad">55</span>
-      <span id="party">33</span>
-      <span id="relaxing">40</span>
+      <span data="angry">12</span>
+      <span data="happy">19</span>
+      <span data="sad">13</span>
+      <span data="party">12</span>
+      <span data="relaxing">19</span>
     </div>
-    <div id="info"></div>
+
+    <ul id="artists"></ul>
+    <ul id="title"> </ul>
+
+
   </body>
 </html>
 
