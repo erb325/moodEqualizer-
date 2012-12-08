@@ -1,4 +1,12 @@
 var App = {
+  values : {
+    "angry" : "",
+    "happy" : "",
+    "sad" : "",
+    "party" : "",
+    "relaxing" : ""
+  },
+  
   moods: {
     angry: ["aggressive", "angry", "angest-ridden", "complex", "dark", "disturbing", "harsh", "industrial", "intense", "manic", "rebellious", "strange"],
     happy: ["calming", "carefree", "cheerful", "cool", "fun", "futuristic", "gentle", "gleeful", "happy", "humorous", "joyous", "playful", "light", "lively", "sexy", "sweet", "theater", "warm", "whimsical"],
@@ -16,8 +24,27 @@ App.init = function() {
       value: value,
       range: "min",
       animate: true,
-      orientation: "vertical"
+      orientation: "vertical",
+      slide: App.onChange
     });
   });
 
+}
+
+App.onChange = function() {
+  $("#sliders > span").each(function() {
+    var mood = $(this).attr('id');
+    var value = $(this).slider('value');
+    
+    App.values[mood] = value;
+    
+    
+  });
+  console.log(App.values);
+  /*
+  $('#info').empty()
+  $("#sliders > span").each(function() {
+    $('#info').append($(this).attr('id') + " - " + $(this).slider('value') + "<br/>");
+  });
+  */
 }
