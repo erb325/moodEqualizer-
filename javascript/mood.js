@@ -52,9 +52,9 @@ App.init = function() {
     console.log(value);
     var slide = $(this);
     slide.empty().slider({
-      value: 0,
+      value: -1,
       range: "min",
-      min: 0,
+      min: -1,
       max: value-1,
       animate: true,
       orientation: "vertical",
@@ -63,7 +63,12 @@ App.init = function() {
 
          console.log(event, ui);
           var slider = $(this).attr("data");
+
+
           var moodName = self.moods[slider][ui.value];
+          if (moodName === undefined){
+              moodName = "";
+          }
           console.log(moodName);
 
           $(this).find(".help").remove();
