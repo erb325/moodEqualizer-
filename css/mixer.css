@@ -28,3 +28,21 @@
 #sliders .help span {
     height: auto;
 }
+
+ul {
+    list-style: none;
+    float: left;
+    margin: 0;
+    padding-left: 0;
+    overflow-y: auto;
+    height: 275px;
+    min-width: 700px;
+}
+
+ul li {
+    padding: 9px;
+    border: 1px solid #CCC;
+    color: #333;
+    font-weight: lighter;
+    margin-bottom: 10px;
+}
