@@ -1,5 +1,5 @@
 var App = {
-  apiURL:"http://developer.echonest.com/api/v4/song/search?api_key=4LVJP0LNDBU3CDUS6&format=json&results=10&mood=",
+  apiURL:"http://developer.echonest.com/api/v4/song/search?api_key=4LVJP0LNDBU3CDUS6&format=json&results=10",
   moods: {
     angry: ["aggressive", "angry", "angst-ridden", "complex", "dark", "disturbing", "harsh", "industrial", "intense", "manic", "rebellious", "strange"],
     happy: ["calming", "carefree", "cheerful", "cool", "fun", "futuristic", "gentle", "gleeful", "happy", "humorous", "joyous", "playful", "light", "lively", "sexy", "sweet", "theater", "warm", "whimsical"],
@@ -21,14 +21,21 @@ App.getAllmoods = function(){
     return moods.join();
 }
 App.searchMoods = function(terms){
-    console.log(App.apiURL+terms);
-    $.ajax(App.apiURL+terms).done(function(data){
+    var moods ="";
+
+    $(terms.split(",")).each(function(index,term){
+        moods = moods + "&mood=" + term;
+
+    });
+    console.log(App.apiURL+moods);
+    $.ajax(App.apiURL+moods).done(function(data){
         App.showNames(data.response.songs);
     });
 
 }
 App.showNames = function(songs){
     if(songs == undefined || songs.length == 0) return;
+    $("#artists").html("");
     for (var song in songs ) {
         var li = $("<li/>").html(songs[song]['artist_name'] + ' - ' + songs[song]['title']);
         $("#artists").append(li);
@@ -38,6 +45,7 @@ App.showNames = function(songs){
 
 };
 App.init = function() {
+  var self = this;
   $("#sliders > span").each(function() {
     // read initial values from markup and remove that
     var value = parseInt($(this).text(), 10);
@@ -52,6 +60,16 @@ App.init = function() {
       orientation: "vertical",
       change:function(event, ui){
          App.searchMoods(App.getAllmoods());
+
+         console.log(event, ui);
+          var slider = $(this).attr("data");
+          var moodName = self.moods[slider][ui.value];
+          console.log(moodName);
+
+          $(this).find(".help").remove();
+          var help = $("<span class='help'>"+moodName+"</span>");
+          $(this).find(".ui-slider-handle").append(help);
+
       }
     });
 

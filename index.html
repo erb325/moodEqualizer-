@@ -8,6 +8,7 @@
   <script src="javascript/mood.js"></script>
 
   <link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.9.2.custom.css">
+  <link rel="stylesheet" href="css/mixer.css">
 
   <script>
     $(function(){
@@ -26,17 +27,23 @@
   <body>
     <h1> <center> Mood Equalizer </center> </h1>
     <p> Use the sliders to adjust your mood </p>
-    <div id="sliders">
-      <span data="angry">12</span>
-      <span data="happy">19</span>
-      <span data="sad">13</span>
-      <span data="party">12</span>
-      <span data="relaxing">19</span>
+    <div id="mixer">
+        <div id="sliders">
+          <span data="angry">12</span>
+          <span data="happy">19</span>
+          <span data="sad">13</span>
+          <span data="party">12</span>
+          <span data="relaxing">19</span>
+        </div>
+        <div id="slidersLabels">
+            <span class="label" data="angry">angry</span>
+            <span class="label" data="happy">happy</span>
+            <span class="label" data="sad">sad</span>
+            <span class="label" data="party">party</span>
+            <span class="label" data="relaxing">relaxing</span>
+        </div>
     </div>
-
-
     <ul id="artists"></ul>
-    <ul id="title"> </ul>
 
 
   </body>

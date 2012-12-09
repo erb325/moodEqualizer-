@@ -1,0 +1,30 @@
+*{
+    outline: none;
+}
+
+#mixer{
+    width: 500px;
+    float: left;
+}
+
+#sliders{
+    overflow: hidden;
+    width: 450px;
+}
+
+#slidersLabels .label{
+   width: 65px;
+   display: inline-block;
+    text-align: center;
+}
+
+.help{
+    font-size: 13px;
+    color: #333;
+    font-weight: lighter;
+
+}
+
+#sliders .help span {
+    height: auto;
+}
